@@ -2,7 +2,7 @@
 $vcenter = (Get-ChildItem Env:VCSERVER).value
 
 # Define the session URL for vCenter
-$vcenter_url = 'https://vcenter.demo.turbonomic.com/rest/com/vmware/cis/session'
+$vcenter_url = "https://$($vcenter)/rest/com/vmware/cis/session"
 
 # Set your vCenter user from the VCUSER environment variable
 $User = (Get-ChildItem Env:VCUSER).value
@@ -32,11 +32,11 @@ $session = @{'vmware-api-session-id' = $token}
 # Write-host $tokenresult	
 # Write-host $token
 
-# THIS IS DUPLICATE
-#$session = @{'vmware-api-session-id' = $token}
+# Set the VM URL
+$vcenter_vm_url = "https://$($vcenter)/rest/vcenter/vm"
 
 # Get list of VMs as a JSON result
-$vmresults = Invoke-WebRequest -Uri https://vcenter.demo.turbonomic.com/rest/vcenter/vm -SkipCertificateCheck -Headers $session
+$vmresults = Invoke-WebRequest -Uri $vcenter_vm_url -SkipCertificateCheck -Headers $session
 
 # Output JSON result to console 
 $vmresults
