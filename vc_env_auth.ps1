@@ -38,5 +38,14 @@ $vcenter_vm_url = "https://$($vcenter)/rest/vcenter/vm"
 # Get list of VMs as a JSON result
 $vmresults = Invoke-WebRequest -Uri $vcenter_vm_url -SkipCertificateCheck -Headers $session
 
-# Output JSON result to console 
+# Output results to console 
 $vmresults
+
+# Set the data center URL
+$vcenter_dc_url = "https://$($vcenter)/rest/vcenter/datacenter"
+
+# Get list of DCs as a JSON result
+$dcresults = Invoke-WebRequest -Uri $vcenter_dc_url -SkipCertificateCheck -Headers $session
+
+# Output results to console
+$dcresults

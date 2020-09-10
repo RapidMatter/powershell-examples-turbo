@@ -1,0 +1,3 @@
+export VCUSER='administrator@vsphere.local'
+export VCPASS='yourpassword'
+export VCSERVER='vcenter.domain.com'
